@@ -5,8 +5,8 @@ LICENSE*
 *.png
 *.jpg
 *.txt
-README*
-*.md
+# README*
+# *.md
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
 logs
