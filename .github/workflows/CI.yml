@@ -4,6 +4,7 @@ on: # rebuild any PRs and main branch changes
   push:
     branches:
       - master
+      - 'releases/*'
 
 jobs:
   build: # make sure build/ci work properly
@@ -39,12 +40,21 @@ jobs:
           - '4.8-2014-q3'
           - '4.8-2014-q2'
           - '4.8-2014-q1'
+          - '4.7-2014-q2'
+          - '4.8-2013-q4'
+          - '4.7-2013-q3'
+          - '4.7-2013-q2'
+          - '4.7-2013-q1'
+          - '4.7-2012-q4'
+        exclude:
+          - os: windows-latest
+            release: '4.7-2012-q4' # There's no .zip release for Windows for this version
 
     name: Test ${{ matrix.release }} @ ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - uses: ./
-      with:
+      with: 
         release: ${{ matrix.release }}
     - run: arm-none-eabi-gcc -v
